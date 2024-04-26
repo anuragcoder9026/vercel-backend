@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 });
 
 app.get('/items', async (req, res) => {
-   res.json({message:"true hai"});
+   res.json({message:"km nhi hai"});
   });
   
   app.get('/items/:id', async (req, res) => {
