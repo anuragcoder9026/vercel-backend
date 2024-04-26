@@ -425,20 +425,19 @@ app.get('/items', async (req, res) => {
   });
   
   app.get('/items/:id', async (req, res) => {
-    const storedItems = await getStoredItems();
-    const item = storedItems.find((item) => item.id === req.params.id);
+    const item = items.find((item) => item.id === req.params.id);
     res.json({ item });
   });
   
   app.post('/items', async (req, res) => {
-    const existingItems = await getStoredItems();
+    const existingItems = items;
     const itemData = req.body;
     const newItem = {
       ...itemData,
       id: Math.random().toString(),
     };
     const updatedItems = [newItem, ...existingItems];
-    await storeItems(updatedItems);
+    items=updatedItems;
     res.status(201).json({ message: 'Stored new item.', item: newItem });
   });
 // Initialize server
