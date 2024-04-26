@@ -19,7 +19,9 @@ app.get("/", (req, res) => {
 });
 
 app.get('/items', async (req, res) => {
-   res.json({message:"km nhi hai"});
+    const storedItems = await getStoredItems();
+    await new Promise((resolve, reject) => setTimeout(() => resolve(),1000));
+    res.json({ items: storedItems });
   });
   
   app.get('/items/:id', async (req, res) => {
